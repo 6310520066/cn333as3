@@ -1,15 +1,17 @@
 package com.example.multiple.ui.numberguessinggame
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -18,6 +20,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.multiple.ui.theme.GrayBackground
+import com.example.multiple.ui.theme.Orange
 import kotlin.random.Random
 
 @Composable
@@ -35,7 +39,14 @@ fun NumberGuessingGame(
         // Top app bar
         TopAppBar(
             title = { Text(text = "Number Guessing Game") },
-            modifier = Modifier.align(Alignment.TopCenter)
+            backgroundColor = GrayBackground,
+            elevation = 0.dp,
+            navigationIcon = {
+                IconButton(onClick = { navController.popBackStack() }) {
+                    Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                }
+            },
+            modifier = Modifier.fillMaxWidth()
         )
 
         Text(
@@ -113,20 +124,38 @@ fun NumberGuessingGame(
                 )
             }
         }
-        Button(
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 40.dp),
-            onClick = {
-                guess = ""
-                numGuesses = 0
-                hint = ""
-                gameOver = false
-                targetNumber = generateRandomNumber()
+        Column( modifier = Modifier
+            .align(Alignment.BottomCenter)
+            .padding(bottom = 40.dp)) {
+            Button(
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Orange,
+                    contentColor = Color.White
+                ),
+                shape = RoundedCornerShape(16.dp),
+                onClick = {
+                    guess = ""
+                    numGuesses = 0
+                    hint = ""
+                    gameOver = false
+                    targetNumber = generateRandomNumber()
+                }
+            ) {
+                Text(text = "PLAY AGAIN")
             }
-        ) {
-            Text(text = "PLAY AGAIN")
+            Button(
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Orange,
+                    contentColor = Color.White
+                ),
+                shape = RoundedCornerShape(16.dp),
+                onClick = { navController.popBackStack() }) {
+                Text(
+                    text = "Select Game"
+                )
+            }
         }
+
 
     }
 }

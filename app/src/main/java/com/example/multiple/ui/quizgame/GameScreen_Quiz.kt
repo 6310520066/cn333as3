@@ -1,14 +1,8 @@
 package com.example.multiple.ui.quizgame
 
 import android.app.Activity
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.AlertDialog
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -16,16 +10,24 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.multiple.R
+import androidx.navigation.NavHostController
+import androidx.compose.foundation.background
+import androidx.compose.material.*
+import com.example.multiple.ui.theme.Orange
+import androidx.compose.material.Button
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
+import androidx.compose.material.AlertDialog
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
-import com.example.multiple.data.questions
+import com.example.multiple.ui.theme.GrayBackground
+
 
 @Composable
 fun GameScreen_Quiz(
@@ -50,19 +52,24 @@ fun GameScreen_Quiz(
         Box(
             Modifier
                 .fillMaxWidth()
-                .background(color = Color(0xFF4A148C))
+                .background(color = Color(0xFFFF835C))
         ) {
-            Text(
-                text = "$name",
-                fontSize = 20.sp,
-                color = Color.White,
-                modifier = Modifier.padding(12.dp)
+            TopAppBar(
+                title = { Text(text = "Quiz Game") },
+                backgroundColor = GrayBackground,
+                elevation = 0.dp,
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                    }
+                },
+                modifier = Modifier.fillMaxWidth()
             )
         }
-        Spacer(modifier = Modifier.height(15.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         Row() {
             Text(
-                text = "$count out of 10",
+                text = "Quiz $count out of 10",
                 fontSize = 20.sp
             )
             Spacer(modifier = Modifier.width(150.dp))
@@ -71,23 +78,29 @@ fun GameScreen_Quiz(
                 fontSize = 20.sp
             )
         }
-        Spacer(modifier = Modifier.height(100.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         Text(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(25.dp),
             text = question.question,
-            fontSize = 20.sp
+            fontSize = 30.sp,
+            textAlign = TextAlign.Center
         )
-        Spacer(modifier = Modifier.height(100.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         Button(
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Orange,
+                contentColor = Color.White
+            ),
             onClick = {
                 quizGameViewModel.checkAnswer(choice[0])
                 quizGameViewModel.getQuestion()
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp)
+                .padding(10.dp),
+            shape = RoundedCornerShape(5.dp)
         ) {
             Text(
                 text = choice[0],
@@ -95,13 +108,18 @@ fun GameScreen_Quiz(
             )
         }
         Button(
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Orange,
+                contentColor = Color.White
+            ),
             onClick = {
                 quizGameViewModel.checkAnswer(choice[1])
                 quizGameViewModel.getQuestion()
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp)
+                .padding(10.dp),
+            shape = RoundedCornerShape(5.dp)
         ) {
             Text(
                 text = choice[1],
@@ -109,13 +127,18 @@ fun GameScreen_Quiz(
             )
         }
         Button(
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Orange,
+                contentColor = Color.White
+            ),
             onClick = {
                 quizGameViewModel.checkAnswer(choice[2])
                 quizGameViewModel.getQuestion()
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp)
+                .padding(10.dp),
+            shape = RoundedCornerShape(5.dp)
         ) {
             Text(
                 text = choice[2],
@@ -123,44 +146,62 @@ fun GameScreen_Quiz(
             )
         }
         Button(
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Orange,
+                contentColor = Color.White
+            ),
             onClick = {
                 quizGameViewModel.checkAnswer(choice[3])
                 quizGameViewModel.getQuestion()
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp)
+                .padding(10.dp),
+            shape = RoundedCornerShape(5.dp)
         ) {
             Text(
                 text = choice[3],
                 fontSize = 20.sp
             )
         }
-        Spacer(modifier = Modifier.height(45.dp))
+        Spacer(modifier = Modifier.height(100.dp))
 
-        Row {
-            Button(onClick = { quizGameViewModel.reset(true) }) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxSize()) {
+            Button(
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Orange,
+                    contentColor = Color.White
+                ),
+                shape = RoundedCornerShape(5.dp),
+                onClick = { quizGameViewModel.reset(true) }) {
                 Text(
-                    text = "RESET",
+                    text = "Restart",
                     fontSize = 20.sp
                 )
             }
-            Spacer(modifier = Modifier.width(30.dp))
-            Button(onClick = { navController.popBackStack() }) {
+            Spacer(modifier = Modifier.width(40.dp))
+            Button(
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Orange,
+                    contentColor = Color.White
+                ),
+                shape = RoundedCornerShape(5.dp),
+                onClick = { navController.popBackStack() }) {
                 Text(
-                    text = "Go Back",
+                    text = "Select Game",
                     fontSize = 20.sp
                 )
             }
-
-            if (gameUiState.currentQuizCount == 11) {
-                FinalScoreDialog(
-                    score = gameUiState.score,
-                    onPlayAgain = { quizGameViewModel.reset(true) }
-                )
-            }
-
         }
+        if (gameUiState.currentQuizCount == 11) {
+        FinalScoreDialog(
+            score = gameUiState.score,
+            onPlayAgain = { quizGameViewModel.reset(true) }
+        )
+    }
     }
 
 }
@@ -179,11 +220,11 @@ fun FinalScoreDialog(
         text = { Text(text = "Your Score: $score") },
         dismissButton = {
             TextButton(onClick = {activity.finish()}) {
-                Text(text = "Exit")
+                Text(text = "Exit!")
             }},
         confirmButton = {
             TextButton(onClick = onPlayAgain) {
-                Text(text = "Reset")
+                Text(text = "Restart")
             }
         }
     )

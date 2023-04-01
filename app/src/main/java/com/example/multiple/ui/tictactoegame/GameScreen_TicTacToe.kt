@@ -12,9 +12,9 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -49,6 +49,18 @@ fun GameScreen_TicTacToe(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
+        TopAppBar(
+            title = { Text(text = "Quiz Game") },
+            backgroundColor = GrayBackground,
+            elevation = 0.dp,
+            navigationIcon = {
+                IconButton(onClick = { navController.popBackStack() }) {
+                    Icon(Icons.Filled.ArrowBack, contentDescription = "Back")
+                }
+            },
+            modifier = Modifier.fillMaxWidth().padding(0.dp)
+        )
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -139,23 +151,38 @@ fun GameScreen_TicTacToe(
             Text(
                 text = state.hintText,
                 fontSize = 24.sp,
-                fontStyle = FontStyle.Italic
+                fontWeight = FontWeight.Medium
             )
-            Button(
-                onClick = {
-                    viewModel.onAction(
-                        UserActions.PlayAgainButtonClicked
+            Column() {
+                Button(
+                    onClick = {
+                        viewModel.onAction(
+                            UserActions.PlayAgainButtonClicked
+                        )
+                    },
+                    shape = RoundedCornerShape(5.dp),
+                    elevation = ButtonDefaults.elevation(5.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Orange,
+                        contentColor = Color.White
                     )
-                          },
-                shape = RoundedCornerShape(5.dp),
-                elevation = ButtonDefaults.elevation(5.dp),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Orange,
-                    contentColor = Color.White
-                )
-            ) {
-                Text(text = "Play Again" , fontSize = 16.sp)
+                ) {
+                    Text(text = "Play Again" , fontSize = 16.sp)
+                }
+                Spacer(modifier = Modifier.width(8.dp))
+                Button(
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Orange,
+                        contentColor = Color.White
+                    ),
+                    shape = RoundedCornerShape(5.dp),
+                    onClick = { navController.popBackStack() }) {
+                    Text(
+                        text = "Select Game"
+                    )
+                }
             }
+
         }
     }
 }

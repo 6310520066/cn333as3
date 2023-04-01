@@ -43,7 +43,7 @@ class QuizGameViewModel : ViewModel() {
 
     fun reset(status: Boolean) {
         score = 0
-        currentQuizCount = 1
+        currentQuizCount = 0
         isGameOver = false
         question = questions.shuffled()
         getQuestion()
