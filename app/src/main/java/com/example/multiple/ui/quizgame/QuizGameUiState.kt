@@ -1,9 +1,11 @@
 package com.example.multiple.ui.quizgame
 
+import com.example.multiple.data.*
+
 data class QuizGameUiState(
-    val currentQuiz: List<String> = listOf(),
-    val currentQuizCount: Int = 1,
-    val score: Int = 0,
-    val isGuessedWordWrong: Boolean = false,
-    val isGameOver: Boolean = false
+    val currentQuiz: Question,
+    val choice: List<String>,
+    val currentQuizCount: Int,
+    val score: Int,
+    val isGameOver: Boolean,
 )
