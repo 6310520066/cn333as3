@@ -33,7 +33,7 @@ There are 3 game in this app, Users can back to Select other game with Select Ga
 
 ## Link to the video demonstration
 
-LinkVideo = > [Click Here.]()
+LinkVideo = > [Click Here.](https://youtu.be/7TVEXZziDP8)
 
 ## Example Display QuizGame
 
