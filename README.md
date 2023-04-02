@@ -6,7 +6,7 @@
 #### Pavisa Sirirojvorakul 6310620064
 
 # Mobile Application function
-There are 3 game in this app, Users can back to Select other game with Select Game button or arrow back symbol on TopAppBar.
+There are 3 games in this app, Users can go back to Select other game with Select Game button or arrow back symbol on TopAppBar.
 ### 1. Number Guessing Game
 - Users can enter a number in an input box.
 - Users can only enter numbers in range of 1 to 1000 only.
