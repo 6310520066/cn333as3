@@ -73,12 +73,12 @@ fun HomeScreen(navController: NavController, modifier: Modifier = Modifier) {
     ) {
         Spacer(modifier = Modifier.height(40.dp))
         Text("Multiple Games",  fontSize = 35.sp, fontWeight = FontWeight.ExtraBold)
-        Spacer(modifier = Modifier.height(0.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         Text("An integer is randomized within a known range. The player will try to guess the number. " +
                 "If the guess is incorrect, the game tells the player whether the guess was too high or too low.",
             fontSize = 20.sp,
             modifier = Modifier.padding(horizontal = 16.dp))
-        Spacer(modifier = Modifier.height(0.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         Button(
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Orange,
@@ -95,10 +95,12 @@ fun HomeScreen(navController: NavController, modifier: Modifier = Modifier) {
                 fontSize = 20.sp
             )
         }
+        Spacer(modifier = Modifier.height(10.dp))
         Text("Quiz is a type of game in which players are asked questions about different " +
                 "topics and they have to get as many correct answers as possible.",
             fontSize = 20.sp
-            ,modifier = Modifier.padding(16.dp))
+            ,modifier = Modifier.padding(horizontal = 16.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         Button(
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Orange,
@@ -115,11 +117,13 @@ fun HomeScreen(navController: NavController, modifier: Modifier = Modifier) {
                 fontSize = 20.sp
             )
         }
+        Spacer(modifier = Modifier.height(10.dp))
         Text("A game in which two players seek in alternate turns " +
                 "to complete a row, a column, or a diagonal with either three O's or three " +
                 "X's drawn in the spaces of a grid of nine squares.",
             fontSize = 20.sp,
-            modifier = Modifier.padding(16.dp))
+            modifier = Modifier.padding(horizontal = 16.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         Button(
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Orange,

@@ -50,7 +50,7 @@ fun GameScreen_TicTacToe(
         verticalArrangement = Arrangement.SpaceEvenly
     ) {
         TopAppBar(
-            title = { Text(text = "Quiz Game") },
+            title = { Text(text = "Tic Tac Toe Game") },
             backgroundColor = GrayBackground,
             elevation = 0.dp,
             navigationIcon = {
