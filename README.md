@@ -37,7 +37,14 @@ LinkVideo = > [Click Here.]()
 
 ## Example Display QuizGame
 
-<img src = "" alt ="" width = "" Height ="">
-<img src = "" alt ="" width = "" Height ="">
-<img src = "" alt ="" width = "" Height ="">
-<img src = "" alt ="" width = "" Height ="">
+### Main Screen of the App
+<img src = "MainScreen.png" alt ="MainScreen" width = "25%" Height ="25%">
+
+### Number Guessing Game
+<img src = "NumGuess.png" alt ="Number Guessing Game" width = "25%" Height ="25%">
+
+### Quiz Game
+<img src = "Quiz.png" alt ="Quiz Game" width = "25%" Height ="25%">
+
+### Tic Tac Toe Game
+<img src = "TicTacToe.png" alt ="Tic Tac Toe Game" width = "25%" Height ="25%">
