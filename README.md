@@ -10,7 +10,7 @@ There are 3 game in this app, Users can back to Select other game with Select Ga
 ### 1. Number Guessing Game
 - Users can enter a number in an input box.
 - Users can only enter numbers in range of 1 to 1000 only.
-- Users will recieve hints if the number entered is too high or too low.
+- Users will receive hints if the number entered is too high or too low.
 - Users will get a congratulations message and number of times guessed if the guessed number is correct.
 - Users can replay the game by play again button.
 
